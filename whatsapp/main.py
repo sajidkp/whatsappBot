@@ -2,18 +2,16 @@ import pyautogui as pt
 from time import sleep
 import pyperclip
 import dataset as data
-
+import follow_ups as fl
+import common as c
 sleep(2) #sleep time before start - for setting up whatsapp initially
 
+# Initial calibration. Requires user to open first chat and keep it active.
+# System checks this and only proceeds if this is true.
 position1 = pt.locateOnScreen(data.img_smiley_and_paperclip, confidence=.6)
 print("Position is: ", position1)
 x = position1[0]
 y = position1[1]
-
-# Function to press Control + a key stroke
-def controlPress( value):
-    with pt.hold('ctrl'):
-        pt.press(value)
 
 #Get the new message
 def get_message():
@@ -24,7 +22,7 @@ def get_message():
     pt.moveTo(x,y, duration = .05)
     pt.moveTo(x+150, y-80, duration = .5 )
     pt.tripleClick()
-    controlPress('c')
+    c.controlPress('c')
     whatsappMessage = pyperclip.paste()
     #Remove Selection and move mouse slightly so that it retain initial status
     pt.click()
@@ -55,11 +53,10 @@ def post_response(message):
 def process_response(message):
     if "i saw this" in str(message).lower():
         return data.instagram_link_response_message + data.offer_message
-
     else:
         return False
 
-#Label Addition function from a message selection
+# Selects required label from  the label seletion pop-up and update label.
 def update_label():
     try:
         position = pt.locateOnScreen(data.bottom_label_star, confidence=.6)
@@ -92,13 +89,13 @@ def update_label():
                 sleep(.5)
                 pt.press('esc')
                 return False
-
             return True
+
     except (Exception):
         print("Bottom label not located")
 
-
-#Add Chat Label
+# Add a Chat Label to active message.
+# Detects Edit Label option from the active message
 def add_chat_label(msg_x, msg_y):
     try:
         position = pt.locateOnScreen(data.message_menu, confidence=.6)
@@ -115,7 +112,6 @@ def add_chat_label(msg_x, msg_y):
                 update_label()
         else:
             print("Arrow not detected")
-
         return True
 
     except(Exception):
@@ -157,5 +153,9 @@ def check_for_new_messages():
 
         sleep(3)
 
-check_for_new_messages()
+#Checking for new message and respond
+# check_for_new_messages()
+
+#Follow Up Message module
+fl.follow_up_message()
 

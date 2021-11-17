@@ -1,5 +1,7 @@
 import cv2
 
+#PATHS
+temp_path = r"C:\Users\sajid\Documents\_SAJID\Works\Wisholize\whatsappBot\assets\temp"
 ##Image Assets
 img_smiley_and_paperclip = cv2.imread(r"C:\Users\sajid\Documents\_SAJID\Works\Wisholize\whatsappBot\assets\smiley_and_paperclip.png")
 green_circle = cv2.imread(r"C:\Users\sajid\Documents\_SAJID\Works\Wisholize\whatsappBot\assets\green_circle.png")
@@ -11,7 +13,8 @@ bottom_label_star = cv2.imread(r"C:\Users\sajid\Documents\_SAJID\Works\Wisholize
 todo_label = cv2.imread(r"C:\Users\sajid\Documents\_SAJID\Works\Wisholize\whatsappBot\assets\todo.png")
 save_btn = cv2.imread(r"C:\Users\sajid\Documents\_SAJID\Works\Wisholize\whatsappBot\assets\save.png")
 reply_label = cv2.imread(r"C:\Users\sajid\Documents\_SAJID\Works\Wisholize\whatsappBot\assets\reply.png")
-
+yesterday_label = cv2.imread(r"C:\Users\sajid\Documents\_SAJID\Works\Wisholize\whatsappBot\assets\yesterday.png")
+mic = cv2.imread(r"C:\Users\sajid\Documents\_SAJID\Works\Wisholize\whatsappBot\assets\mic.png")
 
 
 instagram_keychain_links = [
@@ -37,3 +40,7 @@ offer_message = [
 ]
 
 no_action_response = "Thanks for reaching out. We shall get back to you shortly. Meanwhile, please visit our website www.wisholize.com to check out our offerings."
+
+follow_up_message = "Have you selected the keychain model from the link above sir ?"
+
+author_compare_message = "machine learning"
