@@ -15,7 +15,8 @@ save_btn = cv2.imread(r"C:\Users\sajid\Documents\_SAJID\Works\Wisholize\whatsapp
 reply_label = cv2.imread(r"C:\Users\sajid\Documents\_SAJID\Works\Wisholize\whatsappBot\assets\reply.png")
 yesterday_label = cv2.imread(r"C:\Users\sajid\Documents\_SAJID\Works\Wisholize\whatsappBot\assets\yesterday.png")
 mic = cv2.imread(r"C:\Users\sajid\Documents\_SAJID\Works\Wisholize\whatsappBot\assets\mic.png")
-
+paperclip = cv2.imread(r"C:\Users\sajid\Documents\_SAJID\Works\Wisholize\whatsappBot\assets\paperclip.png")
+upload_image = cv2.imread(r"C:\Users\sajid\Documents\_SAJID\Works\Wisholize\whatsappBot\assets\upload_image.png")
 
 instagram_keychain_links = [
     "https://instagram.com/CA4fBx9A-CH",

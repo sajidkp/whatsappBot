@@ -4,14 +4,14 @@ import pyperclip
 import dataset as data
 import follow_ups as fl
 import common as c
-sleep(2) #sleep time before start - for setting up whatsapp initially
+# sleep(2) #sleep time before start - for setting up whatsapp initially
 
 # Initial calibration. Requires user to open first chat and keep it active.
-# System checks this and only proceeds if this is true.
-position1 = pt.locateOnScreen(data.img_smiley_and_paperclip, confidence=.6)
-print("Position is: ", position1)
-x = position1[0]
-y = position1[1]
+# # System checks this and only proceeds if this is true.
+# position1 = pt.locateOnScreen(data.img_smiley_and_paperclip, confidence=.6)
+# print("Position is: ", position1)
+# x = position1[0]
+# y = position1[1]
 
 #Get the new message
 def get_message():
@@ -157,5 +157,35 @@ def check_for_new_messages():
 # check_for_new_messages()
 
 #Follow Up Message module
-fl.follow_up_message()
+# fl.follow_up_message()
+
+data ={
+    "key1":{
+        'response_type': 1,
+        'response': "Hello World",
+        'image_path': r"C:\Users\sajid\Pictures\Family\ayrin_1.jpg",
+    }
+}
+
+if(data["key1"]["response_type"]) == 1:
+    print("True")
+
+image_path = r"C:\Users\sajid\Pictures\Family\ayrin_1.jpg"
+message = fl.latest_message_from_author()
+if "wisholize" in message:
+    position = pt.locateOnScreen(data.paperclip, confidence='.7')
+    if position is not None:
+        print("Paper clip located")
+        pt.moveTo(position)
+        pt.click()
+        sleep(.5)
+        image_upload_position = pt.locateOnScreen(data.upload_image, confidence='.9')
+        pt.moveTo(image_upload_position)
+        pt.click()
+        sleep(1.5)
+        pt.typewrite(str(image_path), interval=.01)
+        pt.hotkey('enter')
+        sleep(1.5)
+        pt.hotkey('enter')
+
 
