@@ -2,18 +2,14 @@ import pyautogui as pt
 from time import sleep
 import pyperclip
 import dataset as data
-
+import follow_ups as fl
+import common as c
 sleep(2) #sleep time before start - for setting up whatsapp initially
-
+print("CURRENT POSITION: ",pt.position())
 position1 = pt.locateOnScreen(data.img_smiley_and_paperclip, confidence=.6)
 print("Position is: ", position1)
 x = position1[0]
 y = position1[1]
-
-# Function to press Control + a key stroke
-def controlPress( value):
-    with pt.hold('ctrl'):
-        pt.press(value)
 
 #Get the new message
 def get_message():
@@ -24,7 +20,7 @@ def get_message():
     pt.moveTo(x,y, duration = .05)
     pt.moveTo(x+150, y-80, duration = .5 )
     pt.tripleClick()
-    controlPress('c')
+    c.controlPress('c')
     whatsappMessage = pyperclip.paste()
     #Remove Selection and move mouse slightly so that it retain initial status
     pt.click()
@@ -55,7 +51,6 @@ def post_response(message):
 def process_response(message):
     if "i saw this" in str(message).lower():
         return data.instagram_link_response_message + data.offer_message
-
     else:
         return False
 
@@ -92,11 +87,10 @@ def update_label():
                 sleep(.5)
                 pt.press('esc')
                 return False
-
             return True
+
     except (Exception):
         print("Bottom label not located")
-
 
 #Add Chat Label
 def add_chat_label(msg_x, msg_y):
@@ -115,7 +109,6 @@ def add_chat_label(msg_x, msg_y):
                 update_label()
         else:
             print("Arrow not detected")
-
         return True
 
     except(Exception):
@@ -157,5 +150,10 @@ def check_for_new_messages():
 
         sleep(3)
 
-check_for_new_messages()
 
+# check_for_new_messages()
+
+#Follow Up Message module
+fl.follow_up_message(c.DEBUG)
+
+# fl.check_if_latest_message_from_author()
