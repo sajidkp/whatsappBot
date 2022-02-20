@@ -116,6 +116,9 @@ def follow_up_from_active_page(locations):
                     elif data.author_compare_message[keyValue]['response_type'] == data.ARCHIVE_CHAT:
                         c.archive_chat(l)
                         item_archived = True
+                    elif data.author_compare_message[keyValue]['response_type'] == data.RESPOND_CATALOG:
+                        c.post_catalog_response(data.author_compare_message[keyValue]['catalog_positions'])
+                        return  True, items_not_required
             if item_archived == False:
                 items_not_required +=1
 

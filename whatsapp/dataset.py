@@ -2,6 +2,7 @@ import cv2
 
 #PATHS
 temp_path = r"D:\Applications\whatsappBot\assets\temp"
+root_path = r"D:\Applications\whatsappBot"
 
 #------------------------------Image Assets-------------------------------------------------
 
@@ -20,6 +21,9 @@ mic = cv2.imread(r"D:\Applications\whatsappBot\assets\mic.png")
 paperclip = cv2.imread(r"D:\Applications\whatsappBot\assets\paperclip.png")
 upload_image = cv2.imread(r"D:\Applications\whatsappBot\assets\upload_image.png")
 archive_chat = cv2.imread(r"D:\Applications\whatsappBot\assets\archive_chat.png")
+catalog_icon = cv2.imread(r"D:\Applications\whatsappBot\assets\catalog.png")
+send_msg = cv2.imread(r"D:\Applications\whatsappBot\assets\send_message.png")
+
 
 # Images for messages
 KCMini_models = r"D:\Applications\whatsappBot\assets\message_images\KCMini_Models.jpg"
@@ -60,6 +64,7 @@ follow_up_message = "Limited Period Offer!"
 FOLLOW_UP = 1
 RESPOND_IMAGE = 2
 ARCHIVE_CHAT = 3
+RESPOND_CATALOG = 4
 
 #Data Set
 author_compare_message = {
@@ -174,7 +179,13 @@ author_compare_message = {
     "MULTI_LINE": {
         'response_type': FOLLOW_UP,
         'response': ['test line 1', 'test linew2'],
-    }
+    },
+    "Sajid Test": {
+        'response_type': RESPOND_CATALOG,
+        'response': ["", ""],
+        'catalog_positions': [[10,20],
+                              [10,30]],
+    },
 }
 
 #-----------------------FOLLOW UPS END--------------------------------------------------

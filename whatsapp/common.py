@@ -67,23 +67,33 @@ def post_image_response(response_message, image_path):
         send_image(response_message, image_path)
 
 # Post Image Response
-def post_catalog_response(response_message, image_path):
+def post_catalog_response(catalog_positions):
 
-    if type(response_message) == list and type(image_path) == list:
-        print("Both items are list")
-        for response, path in zip(response_message, image_path):
-            print(response, path)
-            send_image(response, path)
-            sleep(1)
-    elif type(response_message) == list:
-        for response in response_message:
-            send_image(response, image_path)
-    elif type(image_path) ==list:
-        for path in image_path:
-            send_image(response_message, path)
-    else:
-        send_image(response_message, image_path)
+    if type(catalog_positions) == list:
+        print("Catalog List present")
+        for position in catalog_positions:
+            print(position)
+            send_catalog(position)
+    else: send_catalog(catalog_positions)
 
+
+def send_catalog(position):
+    paperclip_position = pt.locateOnScreen(data.paperclip, confidence='.8')
+    pt.moveTo(paperclip_position)
+    pt.click()
+    sleep(1.5)
+    catalog_position = pt.locateOnScreen(data.catalog_icon, confidence='.8')
+    pt.moveTo(catalog_position)
+    pt.click()
+    sleep(1.5)
+    pt.moveTo(position)
+    pt.click()
+    sleep(0.5)
+    sendMsg_position = pt.locateOnScreen(data.send_msg, confidence='.8')
+    pt.moveTo(sendMsg_position)
+    pt.click()
+    sleep(1.5)
+    return True
 
 
 def archive_chat(location):
