@@ -154,6 +154,6 @@ def check_for_new_messages():
 # check_for_new_messages()
 
 #Follow Up Message module
-fl.follow_up_message(c.DEBUG)
+fl.follow_up_message(c.LIVE)
 
 # fl.check_if_latest_message_from_author()

@@ -68,31 +68,31 @@ def post_image_response(response_message, image_path):
 
 # Post Image Response
 def post_catalog_response(catalog_positions):
-
     if type(catalog_positions) == list:
         print("Catalog List present")
         for position in catalog_positions:
             print(position)
-            send_catalog(position)
-    else: send_catalog(catalog_positions)
+            select_catalog(position)
+    else: select_catalog(catalog_positions)
+
+    sendMsg_position = pt.locateOnScreen(data.send_msg, confidence='.9')
+    pt.moveTo(sendMsg_position)
+    pt.click()
+    sleep(2)
 
 
-def send_catalog(position):
+def select_catalog(position):
     paperclip_position = pt.locateOnScreen(data.paperclip, confidence='.8')
     pt.moveTo(paperclip_position)
     pt.click()
-    sleep(1.5)
+    sleep(2)
     catalog_position = pt.locateOnScreen(data.catalog_icon, confidence='.8')
     pt.moveTo(catalog_position)
     pt.click()
-    sleep(1.5)
+    sleep(2)
     pt.moveTo(position)
     pt.click()
-    sleep(0.5)
-    sendMsg_position = pt.locateOnScreen(data.send_msg, confidence='.8')
-    pt.moveTo(sendMsg_position)
-    pt.click()
-    sleep(1.5)
+    sleep(1)
     return True
 
 
@@ -107,3 +107,24 @@ def archive_chat(location):
     pt.click()
     sleep(1)
     return True
+
+
+def compare_and_send_response(message):
+    for keyValue in data.author_compare_message:
+        if keyValue.lower() in str(message).lower():
+            if data.author_compare_message[keyValue]['response_type'] == data.FOLLOW_UP:
+                post_response(data.author_compare_message[keyValue]['response'])
+                return True
+            elif data.author_compare_message[keyValue]['response_type'] == data.RESPOND_IMAGE:
+                post_image_response(
+                    data.author_compare_message[keyValue]['response'],
+                    data.author_compare_message[keyValue]['image_path'])
+                return True
+            # elif data.author_compare_message[keyValue]['response_type'] == data.ARCHIVE_CHAT:
+            #     archive_chat(l)
+            #     item_archived = True
+            elif data.author_compare_message[keyValue]['response_type'] == data.RESPOND_CATALOG:
+                post_catalog_response(data.author_compare_message[keyValue]['catalog_positions'])
+                return True
+            else: return False
+

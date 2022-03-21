@@ -120,12 +120,7 @@ author_compare_message = {
         'response_type': FOLLOW_UP,
         'response': ['Guarantee:', '', 'We promise to keep the authenticity of the product as described on the product page. As told, it will be personalized with your desired content and delivered to  your doorstep.', '', 'We currently work in association with courier partners (DTDC, Professional Courier & Speed Post) with whom we shall follow-up closely and ensure the products reach you on time. Tracking details also shall be made available to you once shipped. ', '', 'A refund or replacement as eligible will be provided if the product does not get delivered or is damaged in transit.'],
     },
-    "Have you selected the keychain model needed from the link above sir": {
-        'response_type': RESPOND_IMAGE,
-        'response': ["", ""],
-        'image_path': [KCMini_models, BikeShape1],
-    },
-    " We can do vehicle logos on any of the models above": {
+    "Test - add 2 images from folder": {
         'response_type': RESPOND_IMAGE,
         'response': ["", ""],
         'image_path': [KCMini_models, BikeShape1],
@@ -180,12 +175,16 @@ author_compare_message = {
         'response_type': FOLLOW_UP,
         'response': ['test line 1', 'test linew2'],
     },
-    "Sajid Test": {
+    "Have you selected the keychain model needed from the link above sir": {
         'response_type': RESPOND_CATALOG,
-        'response': ["", ""],
-        'catalog_positions': [[10,20],
-                              [10,30]],
+        'catalog_positions': [[730,370],
+                              [730,490]],
+    },
+    "We can do vehicle logos on any of the moHJBJHBJHBHLKL L FDdels above": {
+        'response_type': RESPOND_CATALOG,
+        'catalog_positions': [[730,370],
+                              [730,490]],
     },
 }
 
-#-----------------------FOLLOW UPS END--------------------------------------------------
+#-----------------------FOLLOW UPS END--------------------------------------------------##

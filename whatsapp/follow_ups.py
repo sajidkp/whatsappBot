@@ -102,6 +102,7 @@ def follow_up_from_active_page(locations):
             continue
         else:
             item_archived = False
+            # compare_and_send_response(message)
             #First Level Follow Up comparison
             for keyValue in data.author_compare_message:
                 if keyValue.lower() in str(message).lower():
@@ -175,8 +176,10 @@ def checking_latest_message_data():
     message = check_if_latest_message_from_author()
     if message is False: return False
     else:
-        if "value2" in str(message).lower():
-            c.post_response(data.author_compare_message['MULTI_LINE']['response'])
+        print("==>Debug Else condition for check_latest-message_data")
+        if "Sajid Test" == message:
+            c.compare_and_send_response(str(message.lower()))
+            # c.post_response(data.author_compare_message['MULTI_LINE']['response'])
             # c.post_image_response(
             #     data.author_compare_message['MULTI_LINE']['response'],
             #     data.author_compare_message['TEST_DATA_ONE']['image_path'])
